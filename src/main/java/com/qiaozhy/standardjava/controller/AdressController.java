@@ -6,12 +6,14 @@ import com.qiaozhy.standardjava.exception.ApiException;
 import com.qiaozhy.standardjava.exception.ApiNotFindUserException;
 import com.qiaozhy.standardjava.exception.NotFindUserException;
 import com.qiaozhy.standardjava.service.IAddressService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -20,7 +22,9 @@ import javax.validation.Valid;
  * @Description:
  * @Date: 2019/4/25 7:35 PM
  */
-@Controller
+@RestController
+@RequestMapping("/address")
+@Slf4j
 public class AdressController {
     @Autowired
     private IAddressService addressService;

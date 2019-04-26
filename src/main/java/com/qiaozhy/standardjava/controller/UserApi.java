@@ -7,10 +7,9 @@ import com.qiaozhy.standardjava.entity.User;
 import com.qiaozhy.standardjava.exception.NotFindUserException;
 import com.qiaozhy.standardjava.service.UserService;
 import com.qiaozhy.standardjava.util.BeanValidators;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Validator;
 import java.util.Date;
@@ -25,6 +24,7 @@ import java.util.Optional;
  */
 @RequestMapping("/v1/api/user")
 @RestController
+@Slf4j
 public class UserApi {
 
     @Autowired
@@ -32,7 +32,7 @@ public class UserApi {
     @Autowired
     private Validator validator ;
 
-    @PostMapping
+    @PostMapping("/User")
     public UserDTO addUser(UserDTO userDTO){
         BeanValidators.validateWithException(validator, userDTO);
         User user =  userDTO.convertToUser();
@@ -40,8 +40,9 @@ public class UserApi {
         UserDTO result = UserDTO.convertFor(saveResultUser);
         return result;
     }
-    @PostMapping
-    public UserDTO findById(Integer uid){
+    @GetMapping("/User/{uid}")
+    public UserDTO findById(@PathVariable Integer uid){
+
         List<String> list = Lists.newArrayList();
         HashMap<String, String> objectObjectHashMap = Maps.newHashMap();
         //User user = new User().setName("adfa").setId(11);
@@ -55,8 +56,9 @@ public class UserApi {
         Optional.ofNullable(optionalUser)
                 .orElseThrow( () -> new NotFindUserException("未找到"));
         result = UserDTO.convertFor(optionalUser.get());
-
-        //Optional.ofNullable(optionalUser)
+        if (log.isDebugEnabled()) {
+            log.debug("查找用户 id:[{}] and 结果为 : [{}] ", uid, result);
+        }
         return result;
     }
 
