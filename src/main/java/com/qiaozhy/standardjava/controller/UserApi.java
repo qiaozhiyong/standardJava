@@ -55,6 +55,8 @@ public class UserApi {
         Optional.ofNullable(optionalUser)
                 .orElseThrow( () -> new NotFindUserException("未找到"));
         result = UserDTO.convertFor(optionalUser.get());
+
+        //Optional.ofNullable(optionalUser)
         return result;
     }
 
