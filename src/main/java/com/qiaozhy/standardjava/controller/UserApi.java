@@ -16,6 +16,7 @@ import javax.validation.Validator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author: qiaozhy
@@ -44,12 +45,16 @@ public class UserApi {
         List<String> list = Lists.newArrayList();
         HashMap<String, String> objectObjectHashMap = Maps.newHashMap();
         //User user = new User().setName("adfa").setId(11);
+        final Optional<User> optionalUser = userService.findById(uid);
         final UserDTO result ;
-        if(userService.findById(uid).isPresent()){
-            result = UserDTO.convertFor(userService.findById(uid).get());
+        /*if(optionalUser.isPresent()){
+            result = UserDTO.convertFor(optionalUser.get());
         }else{
             throw new NotFindUserException("未找到");
-        }
+        }*/
+        Optional.ofNullable(optionalUser)
+                .orElseThrow( () -> new NotFindUserException("未找到"));
+        result = UserDTO.convertFor(optionalUser.get());
         return result;
     }
 
