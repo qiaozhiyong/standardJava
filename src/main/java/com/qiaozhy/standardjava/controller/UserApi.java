@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.qiaozhy.standardjava.DTO.UserDTO;
 import com.qiaozhy.standardjava.entity.User;
+import com.qiaozhy.standardjava.exception.NotFindUserException;
 import com.qiaozhy.standardjava.service.UserService;
 import com.qiaozhy.standardjava.util.BeanValidators;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Validator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,9 +43,16 @@ public class UserApi {
     public UserDTO findById(Integer uid){
         List<String> list = Lists.newArrayList();
         HashMap<String, String> objectObjectHashMap = Maps.newHashMap();
-        User user = new User().setName("adfa").setId(11);
-        UserDTO result = UserDTO.convertFor(user);
+        //User user = new User().setName("adfa").setId(11);
+        final UserDTO result ;
+        if(userService.findById(uid).isPresent()){
+            result = UserDTO.convertFor(userService.findById(uid).get());
+        }else{
+            throw new NotFindUserException("未找到");
+        }
         return result;
     }
+
+
 
 }
