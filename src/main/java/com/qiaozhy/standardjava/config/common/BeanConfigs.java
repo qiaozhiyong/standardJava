@@ -1,4 +1,4 @@
-package com.qiaozhy.standardjava.model;
+package com.qiaozhy.standardjava.config.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,11 +15,11 @@ import javax.validation.Validator;
 public class BeanConfigs {
 
 
-    @Bean
+    /*@Bean
     public Validator getValidator(){
 
         return new LocalValidatorFactoryBean();
 
-    }
+    }*/
 
 }

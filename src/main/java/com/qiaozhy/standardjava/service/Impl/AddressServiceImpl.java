@@ -10,6 +10,7 @@ import com.qiaozhy.standardjava.service.IAddressService;
 import com.qiaozhy.standardjava.util.BeanValidators;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import javax.validation.Validator;
@@ -20,6 +21,7 @@ import java.util.List;
  * @Description:
  * @Date: 2019/4/25 5:51 PM
  */
+@Service
 public class AddressServiceImpl implements IAddressService{
 
     @Autowired

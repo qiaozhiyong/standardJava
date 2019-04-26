@@ -1,8 +1,11 @@
 package com.qiaozhy.standardjava.entity;
 
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 /**
@@ -12,6 +15,7 @@ import java.util.Set;
  */
 @Entity
 @Data
+@Accessors(chain = true)
 public class User {
     @Id
     @GeneratedValue

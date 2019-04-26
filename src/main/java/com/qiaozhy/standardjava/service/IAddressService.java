@@ -1,6 +1,7 @@
 package com.qiaozhy.standardjava.service;
 
 import com.qiaozhy.standardjava.entity.Address;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
