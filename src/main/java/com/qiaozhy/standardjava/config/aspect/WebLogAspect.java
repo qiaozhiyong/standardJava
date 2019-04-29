@@ -108,7 +108,7 @@ public class WebLogAspect {
 
     /**
      * https://stackoverflow.com/questions/14180416/cant-get-ip-from-httpservletrequest-if-using-localhost-url
-     *
+     * 获取真实ip
      * @param request
      * @return
      */
