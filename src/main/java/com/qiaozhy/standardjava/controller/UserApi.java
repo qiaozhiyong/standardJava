@@ -3,6 +3,7 @@ package com.qiaozhy.standardjava.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.qiaozhy.standardjava.DTO.UserDTO;
+import com.qiaozhy.standardjava.config.aspect.WebLog;
 import com.qiaozhy.standardjava.entity.User;
 import com.qiaozhy.standardjava.exception.NotFindUserException;
 import com.qiaozhy.standardjava.service.UserService;
@@ -41,6 +42,7 @@ public class UserApi {
         return result;
     }
     @GetMapping("/User/{uid}")
+    @WebLog(desc = "查找用户")
     public UserDTO findById(@PathVariable Integer uid){
 
         List<String> list = Lists.newArrayList();
@@ -53,8 +55,7 @@ public class UserApi {
         }else{
             throw new NotFindUserException("未找到");
         }*/
-        Optional.ofNullable(optionalUser)
-                .orElseThrow( () -> new NotFindUserException("未找到"));
+        optionalUser.orElseThrow( () -> new NotFindUserException("未找到"));
         result = UserDTO.convertFor(optionalUser.get());
         if (log.isDebugEnabled()) {
             log.debug("查找用户 id:[{}] and 结果为 : [{}] ", uid, result);
