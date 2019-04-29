@@ -50,13 +50,10 @@ public class UserApi {
         //User user = new User().setName("adfa").setId(11);
         final Optional<User> optionalUser = userService.findById(uid);
         final UserDTO result ;
-        /*if(optionalUser.isPresent()){
-            result = UserDTO.convertFor(optionalUser.get());
-        }else{
-            throw new NotFindUserException("未找到");
-        }*/
+        //优雅处理空值
         optionalUser.orElseThrow( () -> new NotFindUserException("未找到"));
         result = UserDTO.convertFor(optionalUser.get());
+        //debug级别日志处理
         if (log.isDebugEnabled()) {
             log.debug("查找用户 id:[{}] and 结果为 : [{}] ", uid, result);
         }

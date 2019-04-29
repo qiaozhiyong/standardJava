@@ -28,14 +28,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    //优雅处理空值
     public List<User> listUser() {
         List<User> userList = userDao.findAll();
         if(CollectionUtils.isEmpty(userList)){
-            return Lists.newArrayList();//guava类库提供的方式
+            return Lists.newArrayList();
         }
         return userList;
     }
     @Override
+    //优雅处理空值
     public Optional<User> findById(Integer id){
         return userDao.findById(id);
     }

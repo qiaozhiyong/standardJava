@@ -34,11 +34,11 @@ public class AddressServiceImpl implements IAddressService{
 
     @Override
     public Address createAddress(Integer uid, Address address) {
-        //============ 以下为约束条件   ==============
 
-        //1.用户id不能为空，且此用户确实是存在的
-
+        //guava 验证
         Preconditions.checkNotNull(uid);
+        Preconditions.checkArgument("".equals(address),"地址不能为空");
+        Preconditions.checkState(check(), "%s is wrong", "testMethod()");
         // TODO: 2019/4/25 hibernate
         User user = null;
 
@@ -48,8 +48,7 @@ public class AddressServiceImpl implements IAddressService{
 
         }
 
-        //2.收货地址的必要字段不能为空
-
+        // validator 校验
         BeanValidators.validateWithException(validator, address);
 
         //3.如果用户还没有收货地址，当此收货地址创建时设置成默认收货地址
@@ -79,5 +78,9 @@ public class AddressServiceImpl implements IAddressService{
     @Override
     public List<Address> listAddresses(Integer uid) {
         return null;
+    }
+
+    private  boolean check(){
+        return false;
     }
 }
