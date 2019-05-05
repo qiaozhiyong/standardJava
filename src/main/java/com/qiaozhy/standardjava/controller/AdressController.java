@@ -1,6 +1,6 @@
 package com.qiaozhy.standardjava.controller;
 
-import com.qiaozhy.standardjava.DTO.AddressDTO;
+import com.qiaozhy.standardjava.dto.AddressDTO;
 import com.qiaozhy.standardjava.entity.Address;
 import com.qiaozhy.standardjava.exception.ApiException;
 import com.qiaozhy.standardjava.exception.ApiNotFindUserException;
@@ -9,7 +9,6 @@ import com.qiaozhy.standardjava.service.IAddressService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
  * @Date: 2019/4/26 11:44 AM
  */
 @AllArgsConstructor
-public abstract class FilterRestTemplate{
+public abstract class BaseFilterRestTemplate{
     // TODO: 2019/4/26
     @Delegate
     protected volatile RestTemplate restTemplate;

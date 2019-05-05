@@ -1,6 +1,7 @@
 package com.qiaozhy.standardjava.exception;
 
-import com.qiaozhy.standardjava.model.AddressErrorCode;
+
+import com.qiaozhy.standardjava.model.BaseAddressErrorCode;
 
 /**
  * @author: qiaozhy
@@ -9,6 +10,6 @@ import com.qiaozhy.standardjava.model.AddressErrorCode;
  */
 public class ApiNotFindUserException extends ApiException{
     public ApiNotFindUserException(String message) {
-        super(AddressErrorCode.NotFindUserErrorCode, message, null);
+        super(BaseAddressErrorCode.NOT_FIND_USER_ERROR_CODE, message, null);
     }
 }

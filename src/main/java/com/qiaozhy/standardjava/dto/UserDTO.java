@@ -1,13 +1,11 @@
-package com.qiaozhy.standardjava.DTO;
+package com.qiaozhy.standardjava.dto;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import com.google.common.base.Converter;
 import com.qiaozhy.standardjava.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.NotNull;
@@ -25,7 +23,7 @@ public class UserDTO {
     @NotNull
     private String name;
     @NotNull
-    private int age;
+    private Integer age;
 
     public User convertToUser() {
         UserDTOConvert userDTOConvert = new UserDTOConvert();

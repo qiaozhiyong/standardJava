@@ -87,13 +87,13 @@ public class WebLogAspect {
      */
     public String getAspectAnnotationDes(JoinPoint joinPoint) throws ClassNotFoundException {
         final String targetName = joinPoint.getTarget().getClass().getName();
-        final String MethodName = joinPoint.getSignature().getName();
+        final String methodName = joinPoint.getSignature().getName();
         final Object[] arguments = joinPoint.getArgs();
         final Class<?> targetClass = Class.forName(targetName);
         final Method[] methods = targetClass.getMethods();
         StringBuilder desc = new StringBuilder("");
         for (Method method : methods) {
-            if (method.getName().equals(MethodName)) {
+            if (method.getName().equals(methodName)) {
                 final Class<?>[] parameterTypes = method.getParameterTypes();
                 if (parameterTypes.length == arguments.length) {
                     desc.append(method.getAnnotation(WebLog.class).desc());

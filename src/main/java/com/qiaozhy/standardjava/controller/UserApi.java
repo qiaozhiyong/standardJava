@@ -2,7 +2,7 @@ package com.qiaozhy.standardjava.controller;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.qiaozhy.standardjava.DTO.UserDTO;
+import com.qiaozhy.standardjava.dto.UserDTO;
 import com.qiaozhy.standardjava.config.aspect.WebLog;
 import com.qiaozhy.standardjava.entity.User;
 import com.qiaozhy.standardjava.exception.NotFindUserException;
@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Validator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -50,6 +49,11 @@ public class UserApi {
         //User user = new User().setName("adfa").setId(11);
         final Optional<User> optionalUser = userService.findById(uid);
         final UserDTO result ;
+        // todo
+        //Function的处理
+        //final Optional<UserDTO> userDTO = optionalUser.map(UserDTO::convertFor);
+        //return userDTO.orElse();
+
         //优雅处理空值
         optionalUser.orElseThrow( () -> new NotFindUserException("未找到"));
         result = UserDTO.convertFor(optionalUser.get());

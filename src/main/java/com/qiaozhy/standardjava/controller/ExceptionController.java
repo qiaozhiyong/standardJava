@@ -3,6 +3,7 @@ package com.qiaozhy.standardjava.controller;
 import com.qiaozhy.standardjava.exception.ApiException;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -61,6 +62,7 @@ public class ExceptionController {
 
     @Setter
     @Getter
+    @ToString
     class ErrorDTO{
         private Long errorCode;
         private String tip;
