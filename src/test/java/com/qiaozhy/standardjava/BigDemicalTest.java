@@ -13,14 +13,14 @@ public class BigDemicalTest {
     @Test
     public void main(){
         //ROUND_HALF_DOWN 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则为向上舍入的舍入模式。
-        //如果舍弃部分 >= 0.5，则舍入行为与 ROUND_UP 相同;否则舍入行为与 ROUND_DOWN 相同。
+        //如果舍弃部分 > 0.5，则舍入行为与 ROUND_UP 相同;否则舍入行为与 ROUND_DOWN 相同。
         BigDecimal money =new BigDecimal(123.75);
         money = money.setScale(1,BigDecimal.ROUND_HALF_DOWN);
         String str =money.toString();
         System.out.println("ROUND_HALF_UP:"+str);
 
         //ROUND_HALF_UP 向“最接近的”数字舍入，如果与两个相邻数字的距离相等，则为上舍入的舍入模式。
-        //如果舍弃部分 > 0.5，则舍入行为与 ROUND_UP 相同;否则舍入行为与 ROUND_DOWN 相同(五舍六入)。
+        //如果舍弃部分 >= 0.5，则舍入行为与 ROUND_UP 相同;否则舍入行为与 ROUND_DOWN 相同(五舍六入)。
         money =new BigDecimal(123.75);
         money = money.setScale(1,BigDecimal.ROUND_HALF_UP);
         str =money.toString();
