@@ -1,6 +1,7 @@
 package com.qiaozhy.standardjava;
 
 import org.junit.Test;
+import org.springframework.util.ObjectUtils;
 
 import java.math.BigDecimal;
 
@@ -25,6 +26,7 @@ public class BigDemicalTest {
         money = money.setScale(1,BigDecimal.ROUND_HALF_UP);
         str =money.toString();
         System.out.println("ROUND_HALF_UP:"+str);
+
 
         //ROUND_DOWN 直接省略多余的小数 如123.15->123.1
         money =new BigDecimal(123.15);

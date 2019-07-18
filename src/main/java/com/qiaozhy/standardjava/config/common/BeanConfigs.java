@@ -22,7 +22,7 @@ import java.util.Locale;
 public class BeanConfigs {
 
 
-    @Bean
+    /*@Bean
     public MethodValidationPostProcessor methodValidationPostProcessor(@Autowired LocalValidatorFactoryBean localValidatorFactoryBean) {
         MethodValidationPostProcessor methodValidationPostProcessor = new MethodValidationPostProcessor();
         methodValidationPostProcessor.setValidator(localValidatorFactoryBean);
@@ -35,7 +35,7 @@ public class BeanConfigs {
         slr.setDefaultLocale(Locale.CHINA);
         slr.setCookieMaxAge(3600);
         return slr;
-    }
+    }*/
 
     @Bean
     public LocalValidatorFactoryBean validator() {
